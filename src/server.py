@@ -67,20 +67,15 @@ def serve_static(path):
 def serve_videos():
     return json.dumps(uploads)
 
-@app.route("/api/videos/<name>")
-def serve_video(name):
-    return send_file(os.path.join(UPLOAD_FOLDER, secure_filename(str(name) + ".mp4")))
+@app.route("/api/videos/<path:filename>")
+def serve_video(filename):
+    return send_file(os.path.join(UPLOAD_FOLDER, filename))
 
-@app.route("/api/thumbnails/<name>")
-def serve_thumbnail(name):
-    return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(str(name)) + ".png"))
+@app.route("/api/thumbnails/<path:filename>")
+def serve_thumbnail(filename):
+    return send_file(os.path.join(THUMBNAILS_FOLDER, filename))
 
-@app.route("/<name>")
-def serve_video_page(_):
-    return send_file(os.path.join(str(app.static_folder), "videoPlayer.html"))
-
-
-AD_PATH = './ads'
+AD_PATH = jn('./ads')
 VIDEO_AD_PATH = AD_PATH + '/videos'
 IMAGE_AD_PATH = AD_PATH + '/images'
 
@@ -122,5 +117,5 @@ if __name__ == '__main__':
 
     print(f"Starting server on PORT: {PORT}, ENV: {ENV}")
 
-    app.run(debug=(ENV == 'dev' and os.environ.get("WERKZEUG_RUN_MAIN") == "true"),
-            port=PORT, host="0.0.0.0")
+    app.run(debug=ENV == 'dev',
+            port=PORT, host="0.0.0.0" if ENV!='dev' else 'localhost')
