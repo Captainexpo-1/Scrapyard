@@ -77,3 +77,24 @@ body {
 .gallery-page .scrolling-container {
     border: 2px solid black;
 }
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the logo and title */
+    gap: 10px; /* Adds space between logo and title */
+    margin-bottom: 20px;
+}
+
+/* the title and logo */
+.logo {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
