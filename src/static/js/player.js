@@ -79,5 +79,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     /*playAd({
         duration: 5000,
         type: "image",
-        });*/
+	});*/
 });
