@@ -1,10 +1,9 @@
 #ad {
-    width: 100%;
-    height: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+    right: 0px;
+    top: 0px;
+    width: 80%;
+    height: 90%;
 }
 
 #timer {
@@ -163,8 +162,7 @@ body {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 200px;
+    width: 400px;
     height: auto;
-    pointer-events: none;
     transition: transform 0.1s linear;
 }
