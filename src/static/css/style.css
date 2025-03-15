@@ -177,3 +177,11 @@ body {
     position: fixed;
     width: 100%;
 }
+#mrbeastmovingad {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 400px;
+    height: auto;
+    transition: transform 0.1s linear;
+}
