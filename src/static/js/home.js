@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Create an image element
             const img = document.createElement("img");
-            img.src = `/api/thumbnails/`+videoName; // Fetch the thumbnail
+            img.src = `/api/thumbnails/${videoName}`; // Fetch the thumbnail
             img.alt = `Thumbnail for ${videoName}`;
             img.classList.add("video-thumbnail");
 
