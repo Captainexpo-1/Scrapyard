@@ -73,7 +73,7 @@ def serve_thumbnail(name):
 
 @app.route("/<name>")
 def serve_video_page(name):
-    return send_file(os.path.join(str(app.static_folder), "video.html?name=", secure_filename(str(name))))
+    return send_file(os.path.join(str(app.static_folder), "videoPlayer.html?name=" + secure_filename(str(name))))
 
 
 AD_PATH = './ads'
