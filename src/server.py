@@ -5,7 +5,7 @@ import base64
 from flask import Flask, send_from_directory, send_file, request, flash, redirect, url_for
 from ffmpy import FFmpeg
 from werkzeug.utils import secure_filename
-from dotenv import load_dotenv
+
 import hashlib
 
 # Ensure src is in Python path
@@ -15,7 +15,6 @@ SRC_PATH = os.path.abspath(os.path.dirname(__file__))
 
 jn = lambda x: os.path.join(SRC_PATH, x)
 
-load_dotenv(jn('..'))
 
 UPLOAD_FOLDER = jn("../uploads")
 THUMBNAILS_FOLDER = jn("../thumbnails")

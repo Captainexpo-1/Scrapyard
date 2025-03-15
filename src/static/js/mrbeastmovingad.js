@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mouseY = window.innerHeight / 2;
     let imgX = mouseX;
     let imgY = mouseY;
-    const speed = 0.05; // Adjust speed (lower is slower)
+    const speed = 10; // Pixels per frame (constant speed)
 
     document.addEventListener("mousemove", (event) => {
         mouseX = event.clientX;
@@ -12,13 +12,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function moveImage() {
-        // Calculate movement with easing
-        imgX += (mouseX - imgX) * speed;
-        imgY += (mouseY - imgY) * speed;
+        const dx = mouseX - imgX;
+        const dy = mouseY - imgY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Apply new position
-        floatingImage.style.left = `${imgX - 100}px`;
-        floatingImage.style.top = `${imgY - 100}px`;
+        if (distance > speed) {
+            const moveX = (dx / distance) * speed;
+            const moveY = (dy / distance) * speed;
+
+            imgX += moveX;
+            imgY += moveY;
+
+            floatingImage.style.left = `${imgX - 50}px`;
+            floatingImage.style.top = `${imgY - 50}px`;
+        }
 
         requestAnimationFrame(moveImage);
     }
