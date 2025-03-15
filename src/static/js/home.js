@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             img.src = `/api/thumbnails/${videoName}`; // Fetch the thumbnail
             img.alt = `Thumbnail for ${videoName}`;
             img.classList.add("video-thumbnail");
+            img.style.width = "100px";
+            img.style.height = "80px";
+            img.style.objectFit = "fill";
 
             // Create a text label for the video name
             const textElement = document.createElement("div");
