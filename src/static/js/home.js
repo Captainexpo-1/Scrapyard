@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Create an image element
             const img = document.createElement("img");
-            img.src = `/api/thumbnails/${encodeURIComponent(videoName)}`; // Fetch the thumbnail
+            img.src = `/api/thumbnails/`+videoName; // Fetch the thumbnail
             img.alt = `Thumbnail for ${videoName}`;
             img.classList.add("video-thumbnail");
 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Append elements to the video item container
             videoItem.appendChild(img);
-            videoItem.appendChild(textElement);
+            //videoItem.appendChild(textElement);
             gridContainer.appendChild(videoItem);
         });
     } catch (error) {
