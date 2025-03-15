@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const speed = 0.05; // Adjust speed (lower is slower)
 
     for (let i = 0; i < 100; i++)
-        document.body.insertAdjacentHTML(
-            "beforeend",
-            `<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="${await getRandomAd()}" vx="1" vy="1" px="${Math.random() * 1000}" py="${Math.random() * 1000}" class="follow-ad"></a>`,
-        );
+        getRandomAd().then((good, bad) => {
+            document.body.insertAdjacentHTML(
+                "beforeend",
+                `<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="${good}" vx="1" vy="1" px="${Math.random() * 1000}" py="${Math.random() * 1000}" class="follow-ad"></a>`,
+            );
+        });
 
     document.addEventListener("mousemove", (event) => {
         mouseX = event.clientX;
