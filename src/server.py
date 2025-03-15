@@ -9,13 +9,17 @@ from werkzeug.utils import secure_filename
 # Ensure src is in Python path
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-UPLOAD_FOLDER = "../uploads"
-THUMBNAILS_FOLDER = "../thumbnails"
+SRC_PATH = os.path.abspath(os.path.dirname(__file__))
+
+jn = lambda x: os.path.join(SRC_PATH, x)
+
+UPLOAD_FOLDER = jn("../uploads")
+THUMBNAILS_FOLDER = jn("../thumbnails")
 MAX_UPLOADS_DIR_SIZE = 500000000 # 500 mb
 
 uploads = []
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder=jn('static'))
 
 def get_size(start_path = '.'):
     total_size = 0
@@ -73,7 +77,7 @@ def serve_thumbnail(name):
 
 @app.route("/<name>")
 def serve_video_page(name):
-    return send_file(os.path.join(str(app.static_folder), "video.html?name=", secure_filename(str(name))))
+    return send_file(os.path.join(str(app.static_folder), "videoPlayer.html"))
 
 
 AD_PATH = './ads'
@@ -109,6 +113,8 @@ def index():
 
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 21516))
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
             uploads.append(filename[:-4])
