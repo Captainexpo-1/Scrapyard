@@ -58,7 +58,10 @@ def serve_upload():
                 ff.run()
             except:
                 print("no ffmpeg")
-            uploads.append(str(file.filename)[:-4])
+            uploads = []
+            for filename in os.listdir(UPLOAD_FOLDER):
+                if filename.endswith(".mp4"):
+                    uploads.append(filename[:-4])
             return redirect(url_for("serve_upload"))
     return send_file(os.path.join(str(app.static_folder), "upload.html"))
 
