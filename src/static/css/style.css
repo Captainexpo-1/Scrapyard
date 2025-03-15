@@ -147,14 +147,14 @@ body {
     width: 75%;
 }
 
-.top-right-label {
+.upload_page_link {
     position: absolute; /* Position it relative to the viewport */
     top: 10px; /* Distance from the top */
     right: 10px; /* Distance from the right */
     font-size: 15px;
     font-weight: normal;
     margin: 0;
-    top: 50px;
+    top: 10px;
 }
 
 #floating-image {
