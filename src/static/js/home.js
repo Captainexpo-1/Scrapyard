@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
         // Fetch video names from the server
-        const response = await fetch("/api/videos");
-        const videoNames = await response.json(); // Expecting an array of strings
-
+        const response = await fetch("/api/thumbnails");
+        const thumbnails = await response.json(); // Expecting an array of strings
+        console.log(videoNames)
         // Clear existing content
         gridContainer.innerHTML = "";
 

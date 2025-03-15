@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
 }
 
 #timer {
@@ -55,7 +56,10 @@ body {
 
 .scrolling-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts columns automatically */
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(150px, 1fr)
+    ); /* Adjusts columns automatically */
     gap: 10px; /* Space between images */
     justify-content: center; /* Centers grid content */
 }
@@ -67,7 +71,6 @@ body {
     border-radius: 5px; /* Optional: Adds rounded corners */
 }
 
-
 /* Page-Specific Styles */
 .home-page .hero-banner {
     background: url("/static/images/home-bg.jpg") center/cover;
@@ -77,7 +80,6 @@ body {
 .gallery-page .scrolling-container {
     border: 2px solid black;
 }
-
 
 .header {
     display: flex;
