@@ -157,7 +157,6 @@ body {
     top: 50px;
 }
 
-
 #floating-image {
     position: absolute;
     top: 50px;
@@ -165,4 +164,9 @@ body {
     width: 400px;
     height: auto;
     transition: transform 0.1s linear;
+}
+
+.follow-ad {
+    position: fixed;
+    width: 75px;
 }
