@@ -2,8 +2,12 @@
 from flask import Flask, send_from_directory, send_file
 import os, random
 import json
-import html
+import sys
 import base64
+
+# Ensure src is in Python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 app = Flask(__name__, static_folder='static')
 
 @app.route('/static/<path:filename>')
@@ -45,7 +49,10 @@ def index():
 
 
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 5000))
+    PORT = int(os.environ.get('PORT', 21516))
     ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
-    print("PORT:",PORT,"\nENV:",ENV)
-    app.run(debug=ENV=='dev', port=PORT)
+
+    print(f"Starting server on PORT: {PORT}, ENV: {ENV}")
+
+    app.run(debug=(ENV == 'dev' and os.environ.get("WERKZEUG_RUN_MAIN") == "true"),
+            port=PORT, host="0.0.0.0")
