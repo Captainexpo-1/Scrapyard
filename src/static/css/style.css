@@ -113,9 +113,18 @@ body {
 #video-container {
     position: fixed;
     right: 0px;
-    bottom: 0px;
+    top: 0px;
     width: 80%;
     height: 90%;
+}
+
+#controls-container {
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .video-title {
