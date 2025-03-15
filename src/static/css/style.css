@@ -1,0 +1,79 @@
+#ad {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#timer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: white;
+    z-index: 1000;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navigation Links */
+.navbar {
+    display: flex;
+    background: #333;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+/* Scrolling Image Container */
+.scrolling-container {
+    width: 100%; /* Full width */
+    height: 100%; /* Adjust as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    border: 2px solid #ccc; /* Optional: Just for visibility */
+    padding: 10px; /* Adds space around the grid */
+}
+
+.scrolling-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts columns automatically */
+    gap: 10px; /* Space between images */
+    justify-content: center; /* Centers grid content */
+}
+
+.scrolling-wrapper img {
+    width: 100%; /* Ensures images fit their grid cell */
+    max-width: 200px; /* Adjust as needed */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 5px; /* Optional: Adds rounded corners */
+}
+
+
+/* Page-Specific Styles */
+.home-page .hero-banner {
+    background: url("/static/images/home-bg.jpg") center/cover;
+    height: 300px;
+}
+
+.gallery-page .scrolling-container {
+    border: 2px solid black;
+}

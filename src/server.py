@@ -1,4 +1,7 @@
-import os
+import os, random
+import json
+import html
+import base64
 from flask import Flask, send_from_directory, send_file, request, flash, redirect, url_for, json
 from ffmpy import FFmpeg
 from werkzeug.utils import secure_filename
@@ -69,6 +72,34 @@ def serve_thumbnail(name):
 def serve_video_page(name):
     return send_file(os.path.join(str(app.static_folder), "video.html?name=", secure_filename(str(name))))
 
+
+AD_PATH = './ads'
+VIDEO_AD_PATH = AD_PATH + '/videos'
+IMAGE_AD_PATH = AD_PATH + '/images'
+
+@app.route('/ads/video/random')
+def random_video_ad():
+    all_ads = os.listdir(VIDEO_AD_PATH)
+    ad = random.choice(all_ads)
+    data_uri = None
+    with open(os.path.join(VIDEO_AD_PATH, ad), 'rb') as f:
+        data_uri = base64.b64encode(f.read()).decode('utf-8')
+    resp = data_uri
+    print(resp)
+    return resp
+
+@app.route('/ads/image/random')
+def random_image_ad():
+    all_ads = os.listdir(IMAGE_AD_PATH)
+    ad = random.choice(all_ads)
+    data_uri = None
+    with open(os.path.join(IMAGE_AD_PATH, ad), 'rb') as f:
+        data_uri = base64.b64encode(f.read()).decode('utf-8')
+        data_uri = 'data:image/jpeg;base64,' + data_uri
+    resp = data_uri
+    return json.dumps({"image": resp})
+
+
 @app.route('/')
 def index():
     return send_file(os.path.join(str(app.static_folder), 'index.html'))
@@ -77,4 +108,7 @@ if __name__ == '__main__':
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
             uploads.append(filename[:-4])
-    app.run(debug=True)
+    PORT = int(os.environ.get('PORT', 5000))
+    ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
+    print("PORT:",PORT,"\nENV:",ENV)
+    app.run(debug=ENV=='dev', port=PORT)
