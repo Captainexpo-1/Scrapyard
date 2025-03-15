@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("usedControls", function () {
         let x = Math.floor(Math.random() * 100); // Increase range
-        let res = Math.floor(x ** 5 / 100_000_000 + 2) * 1000; // Reduce divisor
+        let res = Math.min(Math.floor(x ** 5 / 100_000_000 + 2) * 1000, 30000); // Reduce divisor
         console.log(x, res);
         playAd({
             duration: res,

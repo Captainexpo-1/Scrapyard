@@ -88,3 +88,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     document.body.style.backgroundImage = `url(${await getRandomAd()})`;
 });
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault(); // Prevents the default context menu from appearing
+});
+
+//https://stackoverflow.com/questions/28690564/is-it-possible-to-remove-inspect-element
+document.onkeydown = (e) => {
+    if (e.key == 123) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == "I") {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == "C") {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == "J") {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.key == "U") {
+        e.preventDefault();
+    }
+};
