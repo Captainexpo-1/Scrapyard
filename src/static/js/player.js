@@ -80,4 +80,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         duration: 5000,
         type: "image",
 	});*/
+    document.body.style.backgroundImage = `url(${await getRandomAd()})`;
 });
