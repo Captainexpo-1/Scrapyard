@@ -72,8 +72,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             .querySelector(".video-" + i)
             .addEventListener("click", async () => {
                 videoElement.src = `/api/videos/${video.filename}`;
-                videoElement.play();
-                document.dispatchEvent(usedControlsEvent);
+                if (!isCurrentlyPlayingAd())
+                    document.dispatchEvent(usedControlsEvent);
             });
     });
     /*playAd({
