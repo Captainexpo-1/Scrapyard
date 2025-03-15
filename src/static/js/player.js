@@ -42,8 +42,7 @@ function playTimer(duration) {
 async function playAd(spec) {
     return new Promise(async (resolve, reject) => {
         startedAd();
-        isCurrentlyPlayingAd = true;
-        playTimer(5000);
+        playTimer(spec.duration);
         let duration = spec.duration;
         let type = spec.type;
         let ad = await getRandomAd();
@@ -74,6 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             .addEventListener("click", async () => {
                 videoElement.src = `/api/videos/${video.filename}`;
                 videoElement.play();
+                document.dispatchEvent(usedControlsEvent);
             });
     });
     /*playAd({
