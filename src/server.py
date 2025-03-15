@@ -88,6 +88,10 @@ def serve_video(filename):
 def serve_thumbnail(filename):
     return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(filename)))
 
+@app.route("/favicon.ico")
+def serve_favicon():
+    return send_file(os.path.join(str(app.static_folder), "favicon.ico"))
+
 AD_PATH = jn('./ads')
 VIDEO_AD_PATH = AD_PATH + '/videos'
 IMAGE_AD_PATH = AD_PATH + '/images'

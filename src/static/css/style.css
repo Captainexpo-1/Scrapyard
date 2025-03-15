@@ -170,3 +170,9 @@ body {
     position: fixed;
     width: 75px;
 }
+
+#bottom-banner-ads {
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+}
