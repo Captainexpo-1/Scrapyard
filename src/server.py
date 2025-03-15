@@ -48,13 +48,16 @@ def serve_upload():
         if file and str(file.filename).endswith(".mp4"):
             fullpath = os.path.join(UPLOAD_FOLDER, secure_filename(str(file.filename)))
             file.save(fullpath)
-            ff = FFmpeg(inputs={fullpath: None}, outputs={
-                os.path.join(
-                    THUMBNAILS_FOLDER,
-                    secure_filename(str(file.filename)[:-4] + ".png")
-                ): ['-ss', '00:00:4', '-frames:v', '1']
-            })
-            ff.run()
+            try:
+                ff = FFmpeg(inputs={fullpath: None}, outputs={
+                    os.path.join(
+                        THUMBNAILS_FOLDER,
+                        secure_filename(str(file.filename)[:-4] + ".png")
+                    ): ['-ss', '00:00:4', '-frames:v', '1']
+                })
+                ff.run()
+            except:
+                print("no ffmpeg")
             uploads.append(str(file.filename)[:-4])
             return redirect(url_for("serve_upload"))
     return send_file(os.path.join(str(app.static_folder), "upload.html"))
@@ -76,7 +79,7 @@ def serve_thumbnail(name):
     return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(str(name)) + ".png"))
 
 @app.route("/<name>")
-def serve_video_page(_):
+def serve_video_page(name):
     return send_file(os.path.join(str(app.static_folder), "videoPlayer.html"))
 
 
