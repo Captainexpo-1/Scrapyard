@@ -81,11 +81,11 @@ def serve_videos():
 
 @app.route("/api/videos/<path:filename>")
 def serve_video(filename):
-    return send_file(os.path.join(UPLOAD_FOLDER, filename))
+    return send_file(os.path.join(UPLOAD_FOLDER, secure_filename(filename) + ".mp4"))
 
 @app.route("/api/thumbnails/<path:filename>")
 def serve_thumbnail(filename):
-    return send_file(os.path.join(THUMBNAILS_FOLDER, filename))
+    return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(filename) + ".png"))
 
 AD_PATH = jn('./ads')
 VIDEO_AD_PATH = AD_PATH + '/videos'
