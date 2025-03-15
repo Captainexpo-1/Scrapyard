@@ -113,7 +113,7 @@ body {
 #video-container {
     position: fixed;
     right: 0px;
-    top: 0px;
+    top: 50px;
     width: 80%;
     height: 90%;
 }
@@ -155,4 +155,16 @@ body {
     font-size: 15px;
     font-weight: normal;
     margin: 0;
+    top: 50px;
+}
+
+
+#floating-image {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    height: auto;
+    pointer-events: none;
+    transition: transform 0.1s linear;
 }

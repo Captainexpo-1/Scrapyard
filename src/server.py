@@ -135,7 +135,7 @@ if __name__ == '__main__':
         os.makedirs(THUMBNAILS_FOLDER)
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
-            create_thumbnail(filename)
+            #create_thumbnail(filename)
             uploads.append(filename)
     ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
 
