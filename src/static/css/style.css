@@ -138,3 +138,12 @@ body {
 .video-thumbnail {
     width: 75%;
 }
+
+.top-right-label {
+    position: absolute; /* Position it relative to the viewport */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0;
+}
