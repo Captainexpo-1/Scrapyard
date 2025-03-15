@@ -21,23 +21,28 @@ body {
 
 /* Scrolling Image Container */
 .scrolling-container {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    display: flex;
-    scrollbar-width: none;
+    width: 100%; /* Full width */
+    height: 100%; /* Adjust as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    border: 2px solid #ccc; /* Optional: Just for visibility */
+    padding: 10px; /* Adds space around the grid */
 }
 
 .scrolling-wrapper {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts columns automatically */
+    gap: 10px; /* Space between images */
+    justify-content: center; /* Centers grid content */
 }
 
 .scrolling-wrapper img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
+    width: 100%; /* Ensures images fit their grid cell */
+    max-width: 200px; /* Adjust as needed */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 5px; /* Optional: Adds rounded corners */
 }
+
 
 /* Page-Specific Styles */
 .home-page .hero-banner {
