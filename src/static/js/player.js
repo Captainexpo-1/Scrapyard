@@ -9,11 +9,15 @@ const adStoppedEvent = new Event("adStopped");
 function stoppedAd() {
     adsPlaying--;
     document.dispatchEvent(adStoppedEvent);
+    if (adsPlaying === 0) {
+        document.cookie = "adPlaying=false; path=/";
+    }
 }
 
 function startedAd() {
     adsPlaying++;
     document.dispatchEvent(adStartedEvent);
+    document.cookie = "adPlaying=true; path=/";
 }
 
 async function getRandomAd() {
@@ -76,9 +80,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     document.dispatchEvent(usedControlsEvent);
             });
     });
-    /*playAd({
-        duration: 5000,
-        type: "image",
-	});*/
+    if (document.cookie.includes("adPlaying=true")) {
+        window.alert(
+            "You left while an ad was playing. Please watch the ad to continue.",
+        );
+        playAd({ duration: 10000 });
+    }
     document.body.style.backgroundImage = `url(${await getRandomAd()})`;
 });
