@@ -61,7 +61,7 @@ def serve_upload():
             uploads = []
             for filename in os.listdir(UPLOAD_FOLDER):
                 if filename.endswith(".mp4"):
-                    uploads.append(filename[:-4])
+                    uploads.append(filename)
             return redirect(url_for("serve_upload"))
     return send_file(os.path.join(str(app.static_folder), "upload.html"))
 
@@ -71,7 +71,13 @@ def serve_static(path):
 
 @app.route("/api/videos")
 def serve_videos():
-    return json.dumps(uploads)
+    resp = []
+    for filename in uploads:
+        resp.append({
+            "filename": filename,
+            "thumbnail": f"/api/thumbnails/{filename[:-4]}.png"
+        })
+    return json.dumps(resp)
 
 @app.route("/api/videos/<path:filename>")
 def serve_video(filename):
@@ -113,12 +119,12 @@ def index():
     return send_file(os.path.join(str(app.static_folder), 'index.html'))
 
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 21516))
+    PORT = int(os.environ.get('PORT', 5000))
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
-            uploads.append(filename[:-4])
+            uploads.append(filename)
     ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
 
     print(f"Starting server on PORT: {PORT}, ENV: {ENV}")

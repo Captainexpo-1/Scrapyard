@@ -1,6 +1,8 @@
 var adsPlaying = 0;
 var isCurrentlyPlayingAd = () => adsPlaying > 0;
 
+const videoElement = document.getElementById("video");
+
 const adStartedEvent = new Event("adStarted");
 const adStoppedEvent = new Event("adStopped");
 
@@ -58,8 +60,24 @@ async function playAd(spec) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    playAd({
+    // Load uploaded videos into #video-list
+    let i = 0;
+    (await (await fetch("/api/videos")).json()).forEach((video) => {
+        i++;
+        const elem = `<div class="video-title video-${i}">${video.filename}</div>`;
+        document
+            .getElementById("video-list")
+            .insertAdjacentHTML("beforeend", elem);
+
+        document
+            .querySelector(".video-" + i)
+            .addEventListener("click", async () => {
+                videoElement.src = `/api/videos/${video.filename}`;
+                videoElement.play();
+            });
+    });
+    /*playAd({
         duration: 5000,
         type: "image",
-    });
+        });*/
 });

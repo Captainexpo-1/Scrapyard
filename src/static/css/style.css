@@ -100,3 +100,36 @@ body {
     font-weight: bold;
     margin: 0;
 }
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background: black;
+}
+
+#video-container {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    width: 80%;
+    height: 90%;
+}
+
+.video-title {
+    cursor: pointer;
+    color: white;
+}
+.video-title:hover {
+    color: yellow;
+}
+
+#video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+}
