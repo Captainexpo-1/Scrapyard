@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let i = 0;
     (await (await fetch("/api/videos")).json()).forEach((video) => {
         i++;
-        const elem = `<div class="video-title video-${i}">${video.name}\n<img class="video-thumbnail" src="${video.thumbnail}"></div>`;
+        const elem = `<div class="video-title video-${i}">${video.name}<br><img class="video-thumbnail" src="${video.thumbnail}"></div>`;
         document
             .getElementById("video-list")
             .insertAdjacentHTML("beforeend", elem);

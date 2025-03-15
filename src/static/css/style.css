@@ -100,7 +100,6 @@ body {
     margin: 0;
 }
 
-
 #video-container {
     position: fixed;
     right: 0px;
@@ -177,6 +176,7 @@ body {
     position: fixed;
     width: 100%;
 }
+
 #mrbeastmovingad {
     position: absolute;
     top: 50px;
@@ -184,4 +184,12 @@ body {
     width: 400px;
     height: auto;
     transition: transform 0.1s linear;
+}
+
+.ad-2-yay {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0px !important;
+    top: 0px !important;
+    position: fixed;
 }

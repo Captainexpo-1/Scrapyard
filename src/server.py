@@ -5,6 +5,8 @@ import base64
 from flask import Flask, send_from_directory, send_file, request, flash, redirect, url_for
 from ffmpy import FFmpeg
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+import hashlib
 
 # Ensure src is in Python path
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
@@ -13,6 +15,8 @@ SRC_PATH = os.path.abspath(os.path.dirname(__file__))
 
 jn = lambda x: os.path.join(SRC_PATH, x)
 
+load_dotenv(jn('..'))
+
 UPLOAD_FOLDER = jn("../uploads")
 THUMBNAILS_FOLDER = jn("../thumbnails")
 MAX_UPLOADS_DIR_SIZE = 500000000 # 500 mb
@@ -20,6 +24,7 @@ MAX_UPLOADS_DIR_SIZE = 500000000 # 500 mb
 uploads = []
 
 app = Flask(__name__, static_folder=jn('static'))
+app.secret_key = os.urandom(24)
 
 def get_size(start_path = '.'):
     total_size = 0
@@ -35,6 +40,9 @@ def get_size(start_path = '.'):
 @app.route('/upload', methods=['GET','POST'])
 def serve_upload():
     if request.method == "POST":
+        if request.form.get("password") != os.environ.get("UPLOAD_PASSWORD"):
+            flash("Invalid password")
+            return redirect(request.url)
         if "file" not in request.files:
             flash("No file part")
             return redirect(request.url)

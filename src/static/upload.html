@@ -1,18 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Upload New Video</title>
-</head>
-<body>
-	<a href="/">Home</a>
-	<div>
-		<h1>Upload your video!</h1>
-		<form method="post" enctype="multipart/form-data" action="/upload">
-			<input type="file" name="file">
-			<input type="submit" value="Upload">
-		</form>
-	</div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Upload New Video</title>
+        <link rel="stylesheet" href="static/css/style.css" />
+    </head>
+    <body>
+        <img src="" id="ad" class="ad-2-yay" style="display: none" />
+        <div id="timer" style="display: none">5</div>
+
+        <a href="/">Home</a>
+        <div>
+            <h1>Upload your video!</h1>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <input type="file" name="file" />
+                <input type="text" name="password" />
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+    </body>
+    <script src="static/js/player.js"></script>
+    <script>
+        playAd({ duration: 10000 });
+    </script>
 </html>
