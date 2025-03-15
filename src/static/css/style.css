@@ -133,3 +133,7 @@ body {
     text-align: center;
     font-size: 25px;
 }
+
+.video-thumbnail {
+    width: 75%;
+}

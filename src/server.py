@@ -21,6 +21,15 @@ uploads = []
 
 app = Flask(__name__, static_folder=jn('static'))
 
+def create_thumbnail(filepath: str) -> None:
+    ff = FFmpeg(inputs={filepath: None}, outputs={
+        os.path.join(
+            THUMBNAILS_FOLDER,
+            secure_filename(str(filepath)[:-4] + ".png")
+        ): ['-ss', '00:00:4', '-frames:v', '1']
+    })
+    ff.run()
+
 def get_size(start_path = '.'):
     total_size = 0
     for dirpath, _, filenames in os.walk(start_path):
@@ -81,11 +90,11 @@ def serve_videos():
 
 @app.route("/api/videos/<path:filename>")
 def serve_video(filename):
-    return send_file(os.path.join(UPLOAD_FOLDER, secure_filename(filename) + ".mp4"))
+    return send_file(os.path.join(UPLOAD_FOLDER, secure_filename(filename)))
 
 @app.route("/api/thumbnails/<path:filename>")
 def serve_thumbnail(filename):
-    return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(filename) + ".png"))
+    return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(filename)))
 
 AD_PATH = jn('./ads')
 VIDEO_AD_PATH = AD_PATH + '/videos'
@@ -122,8 +131,11 @@ if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 5000))
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
+    if not os.path.exists(THUMBNAILS_FOLDER):
+        os.makedirs(THUMBNAILS_FOLDER)
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
+            create_thumbnail(os.path.join(UPLOAD_FOLDER, filename))
             uploads.append(filename)
     ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
 

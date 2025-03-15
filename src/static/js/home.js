@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function () {
+/*document.addEventListener("DOMContentLoaded", async function () {
     const gridContainer = document.getElementById("videoLink");
 
     try {
@@ -11,14 +11,15 @@ document.addEventListener("DOMContentLoaded", async function () {
         gridContainer.innerHTML = "";
 
         // Loop through video names and fetch corresponding thumbnails
-        videoNames.forEach(async (videoName) => {
+        videoNames.forEach(async (video) => {
+            const videoName = video.filename;
             const videoItem = document.createElement("a");
             videoItem.classList.add("video-item");
-            videoItem.href = "/"+videoName
+            videoItem.href = "/" + videoName;
 
             // Create an image element
             const img = document.createElement("img");
-            img.src = `/api/thumbnails/${videoName}`; // Fetch the thumbnail
+            img.src = `/api/thumbnails/${videoName.split(".")[0] + ".png"}`; // Fetch the thumbnail
             img.alt = `Thumbnail for ${videoName}`;
             img.classList.add("video-thumbnail");
             img.style.width = "100px";
@@ -38,4 +39,4 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Error fetching video names or thumbnails:", error);
     }
-});
+});*/
