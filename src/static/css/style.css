@@ -100,14 +100,6 @@ body {
     margin: 0;
 }
 
-#sidebar {
-    position: fixed;
-    left: 0;
-    width: 15%;
-    height: 100%;
-    background: black;
-    overflow-y: auto;
-}
 
 #video-container {
     position: fixed;
@@ -134,27 +126,36 @@ body {
     color: yellow;
 }
 
+#sidebar {
+    position: fixed;
+    left: 0; /* Moves it to the left */
+    top: 0;
+    bottom: 0;
+    width: 250px; /* Adjust width as needed */
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
 #video-list {
-    display: absolute;
-    gap: 10px;
-    padding: 10px;
-    text-align: center;
-    font-size: 25px;
-    overflow-y: auto;
+    flex-grow: 1; /* Allows it to take the full height */
+    overflow-y: auto; /* Enables scrolling only for video list */
+    padding-bottom: 20px;
 }
 
 .video-thumbnail {
     width: 75%;
 }
 
-.top-right-label {
+.upload_page_link {
     position: absolute; /* Position it relative to the viewport */
     top: 10px; /* Distance from the top */
     right: 10px; /* Distance from the right */
     font-size: 15px;
     font-weight: normal;
     margin: 0;
-    top: 50px;
+    top: 10px;
 }
 
 #floating-image {
