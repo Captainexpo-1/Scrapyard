@@ -45,4 +45,7 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
+    PORT = int(os.environ.get('PORT', 5000))
+    ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
+    print("PORT:",PORT,"\nENV:",ENV)
+    app.run(debug=ENV=='dev', port=PORT)
