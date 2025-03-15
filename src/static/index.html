@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="static/css/style.css" />
     </head>
     <body>
+        <!-- Ad stuff or whatever -->
+        <img id="ad" src="" />
+        <div id="timer">5</div>
         <!-- the header -->
         <div class="header">
             <img
@@ -16,10 +19,16 @@
             />
             <h1 class="header-title">Shitio Player</h1>
         </div>
+
         <!-- the scrolling frame for videos to watch -->
         <div class="scrolling-container">
             <div class="scrolling-wrapper" id="videoLink"></div>
         </div>
+        <!-- video player -->
+        <video width="85%" height="85%" controls>
+            <source src="/api/videos/gigachad.mp4" type="video/mp4" />
+        </video>
     </body>
     <script src="static/js/home.js"></script>
+    <script src="static/js/player.js"></script>
 </html>
