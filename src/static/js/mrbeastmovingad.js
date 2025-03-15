@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mouseY = window.innerHeight / 2;
     let imgX = mouseX;
     let imgY = mouseY;
-    const speed = 10; // Pixels per frame (constant speed)
+    const speed = 5; // Pixels per frame (constant speed)
 
     document.addEventListener("mousemove", (event) => {
         mouseX = event.clientX;
