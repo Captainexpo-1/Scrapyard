@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let mouseY = window.innerHeight / 2;
     const speed = 0.05; // Adjust speed (lower is slower)
 
-    for (let i = 0; i < 100; i++)
+    for (let i = 0; i < 50; i++)
         getRandomAd().then((good, bad) => {
             document.body.insertAdjacentHTML(
                 "beforeend",
