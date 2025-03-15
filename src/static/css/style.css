@@ -107,6 +107,7 @@ body {
     width: 15%;
     height: 100%;
     background: black;
+    overflow-y: auto;
 }
 
 #video-container {
@@ -126,12 +127,12 @@ body {
 }
 
 #video-list {
-    display: flex;
-    flex-direction: column;
+    display: absolute;
     gap: 10px;
     padding: 10px;
     text-align: center;
     font-size: 25px;
+    overflow-y: auto;
 }
 
 .video-thumbnail {

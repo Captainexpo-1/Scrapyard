@@ -22,7 +22,7 @@ uploads = []
 app = Flask(__name__, static_folder=jn('static'))
 
 def create_thumbnail(filepath: str) -> None:
-    ff = FFmpeg(inputs={filepath: None}, outputs={
+    ff = FFmpeg(inputs={os.path.join(UPLOAD_FOLDER, filepath): None}, outputs={
         os.path.join(
             THUMBNAILS_FOLDER,
             secure_filename(str(filepath)[:-4] + ".png")
@@ -135,7 +135,7 @@ if __name__ == '__main__':
         os.makedirs(THUMBNAILS_FOLDER)
     for filename in os.listdir(UPLOAD_FOLDER):
         if filename.endswith(".mp4"):
-            create_thumbnail(os.path.join(UPLOAD_FOLDER, filename))
+            create_thumbnail(filename)
             uploads.append(filename)
     ENV = os.environ.get('DEPLOY_ENVIRONMENT', 'dev')
 
