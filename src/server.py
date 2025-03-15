@@ -72,7 +72,7 @@ def serve_thumbnail(name):
     return send_file(os.path.join(THUMBNAILS_FOLDER, secure_filename(str(name)) + ".png"))
 
 @app.route("/<name>")
-def serve_video_page(_):
+def serve_video_page(name):
     return send_file(os.path.join(str(app.static_folder), "videoPlayer.html"))
 
 
