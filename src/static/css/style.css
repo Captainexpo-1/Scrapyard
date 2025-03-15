@@ -161,9 +161,8 @@ body {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 200px;
+    width: 400px;
     height: auto;
-    pointer-events: none;
     transition: transform 0.1s linear;
 }
 
